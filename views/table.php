@@ -115,20 +115,29 @@ if($countRowsTotal > $itemsPerPage){
                         <?php
                             
                             echo '<li><a href="table.php"><i class="material-icons">chevron_left</i></a></li>';
-                            
-                                $page = $page/$itemsPerPage;
-                                if($page-1<=1){
-                                    $page = 3;
-                                }elseif ($page+3>$numPages) {
-                                    $page = $numPages-2;
+                                if($numPages <= 5){
+                                    for($i = 0; $i < $numPages ; $i++){
+                                            $styleActive = "";
+                                            if($_GET['page']/10 == $i){
+                                                $styleActive = 'class="active"';
+                                            } 
+                                        echo '<li '.$styleActive.'><a href="table.php?page=' . ($i * $itemsPerPage) . '">' . ($i+1) . '</a></li> ';
+                                    } 
+                                }else{
+                                    $page = $page/$itemsPerPage;
+                                    if($page-1<=1){
+                                        $page = 3;
+                                    }elseif ($page+3>$numPages) {
+                                        $page = $numPages-2;
+                                    }
+                                    for($i = $page-3; $i <= $page+1 ; $i++){
+                                            $styleActive = "";
+                                            if($_GET['page']/10 == $i){
+                                                $styleActive = 'class="active"';
+                                            } 
+                                        echo '<li '.$styleActive.'><a href="table.php?page=' . ($i * $itemsPerPage) . '">' . ($i+1) . '</a></li> ';
+                                    } 
                                 }
-                                for($i = $page-3; $i <= $page+1 ; $i++){
-                                        $styleActive = "";
-                                        if($_GET['page']/10 == $i){
-                                            $styleActive = 'class="active"';
-                                        } 
-                                    echo '<li '.$styleActive.'><a href="table.php?page=' . ($i * $itemsPerPage) . '">' . ($i+1) . '</a></li> ';
-                                }                              
 
                             echo '<li><a href="table.php?page=' . ($countRowsTotal - $itemsPerPage) . '">
                                  <i class="material-icons">chevron_right</i>
