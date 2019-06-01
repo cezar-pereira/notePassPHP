@@ -12,7 +12,7 @@ $newPass = md5($_POST['newPassword']);
 
 $sql = " UPDATE usuarios SET senha = '$newPass' WHERE nome = '$name' AND senha = '$currentPass' ";
 
-mysqli_query($connection, $sql);
+$connection->query($sql);
 
 if (mysqli_affected_rows($connection) != 0) {
 	mysqli_close($connection);

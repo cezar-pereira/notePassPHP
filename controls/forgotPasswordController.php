@@ -2,28 +2,28 @@
 include '../db.php';
 include '../header.php';
 include '../footer.php';
-$nome = $_POST['fieldUser'];
-$palavraChave = $_POST['worldKey'];
+$name = $_POST['fieldUser'];
+$keyWord = $_POST['keyWord'];
 
-if (verifyUser($nome, $palavraChave)) {
-	openModal($nome);
-	?>
+if (verifyUser($name, $keyWord)) {
+	openModal($name);
+?>
 		<script>
 			M.toast({html: 'Usuário encontrado.', displayLength: 6000});
 		</script>
 <?php
 } else {
-	?>
+?>
 	<script>
 		M.toast({html: 'Não foi possível recuperar.', displayLength: 6000});
 	</script>
-	<?php
+<?php
 }
 
-function verifyUser($nome, $palavraChave) {
+function verifyUser($name, $keyWord) {
 	include '../db.php';
-	$query = " SELECT * FROM usuarios WHERE nome = '$nome' AND palavraChave = '$palavraChave' limit 1";
-	if (mysqli_num_rows(mysqli_query($connection, $query)) == 1) {
+	$sql = " SELECT * FROM usuarios WHERE nome = '$name' AND palavraChave = '$keyWord' limit 1";
+	if ($connection->query($sql)->num_rows == 1) {
 		mysqli_close($connection);
 		return true;
 	} else {
@@ -32,8 +32,8 @@ function verifyUser($nome, $palavraChave) {
 	}
 }
 
-function openModal($nome) {
-	?>
+function openModal($name) {
+?>
 
 	<div id="modalForgotPassword" class="modal">
 		<div class="modal-content">
@@ -41,10 +41,8 @@ function openModal($nome) {
 	            <div class="row">
 	                <div class="input-field col s12">
 	                    <i class="material-icons prefix">lock</i>
-<?php
-echo ('<input type="hidden" name="fieldModalNome" value="' . $nome . '" />'); //para enviar o nome que será usado na controller
-	 ?>
-	                    <input id="fieldModalPassword" type="password" class="validate"  required name="fieldModalPassword">
+	                     <input name="fieldModalName" type="hidden" value="<?php echo $name ?>">
+	                    <input id="fieldModalPassword" type="password" class="validate" required name="fieldModalPassword">
 	                    <label for="fieldModalPassword">Digite a nova senha</label>
 	                </div>
 	            </div>

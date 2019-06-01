@@ -18,8 +18,8 @@ include '../header.php';
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">lock</i>
-                    <input id="worldKey" type="text" class="validate" required name="worldKey">
-                    <label for="worldKey">Palavra/frase chave</label>
+                    <input id="keyWord" type="text" class="validate" required name="keyWord">
+                    <label for="keyWord">Palavra/frase chave</label>
                 </div>
             </div>
             <br>

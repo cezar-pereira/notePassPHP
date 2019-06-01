@@ -7,7 +7,7 @@ include '../footer.php';
 session_start();
 if (isset($_SESSION['login'])) {
 	$id = $_SESSION['id'];
-	$nome = $_SESSION['name'];
+	$name = $_SESSION['name'];
 	?>
 
  <div class="row">
@@ -21,7 +21,7 @@ if (isset($_SESSION['login'])) {
                     <li><a href = "../controls/logoutController.php">Sair<span class = "badge"><i class="material-icons">exit_to_app</i></span></a></li>
                 </ul>
                 <a class = "btn dropdown-button" href = "#" data-activates = "dropdown">
-                <?php echo 'Olá, ' . $nome; ?><i class="material-icons right">settings</i></i></a>
+                <?php echo 'Olá, ' . $name; ?><i class="material-icons right">settings</i></i></a>
             </div>
 
 
@@ -236,7 +236,7 @@ if($countRowsTotal > $itemsPerPage){
     </div>
 </div>
 
-<!-- MODAL EDITAR ITEM -->
+<!-- MODAL VIEW ITEM -->
   <div id="viewItemTable" class="modal">
     <div class="modal-content" id="modalContent">
       <p id="descriptionModal"></p>
@@ -256,11 +256,6 @@ if($countRowsTotal > $itemsPerPage){
       });
 });
 </script>
-
-<div id="lol"></div>
-
-
-
 
 <?php
 

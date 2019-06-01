@@ -25,8 +25,8 @@ include '../header.php';
             <div class="row">
                 <div class="input-field col s12 tooltipped" data-tooltip="Palavra/frase usada para<br>recuperar a conta." >
                     <i class="material-icons prefix">vpn_key</i>
-                    <input id="fieldWordKey" type="text" class="validate" required name="fieldWordKey">
-                    <label for="fieldWordKey">Palavra/frase chave</label>
+                    <input id="fieldKeyWord" type="text" class="validate" required name="fieldKeyWord">
+                    <label for="fieldKeyWord">Palavra/frase chave</label>
                 </div>
             </div>
             <div class="row">
@@ -52,5 +52,6 @@ include '../header.php';
 </div>
 
 <div id="resposta"></div>
+
 <?php
 include '../footer.php';

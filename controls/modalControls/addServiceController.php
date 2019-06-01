@@ -14,14 +14,14 @@ if (isset($_SESSION['login'])) {
 	$sql = " INSERT INTO servicos (descricao, usuario, senha)
              VALUES ('$description','$user','$pass')";
 
-	mysqli_query($connection, $sql);
-
+	$connection->query($sql);
+	
 	//ADICIONAR TABELA usuario_servico
 	$idService = mysqli_insert_id($connection);
 
 	$sql = " INSERT INTO usuario_servico (id_usuario, id_servico)
-		             VALUES ('$idUser', '$idService')";
-	mysqli_query($connection, $sql);
+		            VALUES ('$idUser', '$idService')";
+	$connection->query($sql);
 	mysqli_close($connection);
 
 	echo "<script>location.href='../../index.php';</script>";
